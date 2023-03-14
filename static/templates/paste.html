@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sarthak | pastebin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/css/paste.css" />
+    <script>
+      const ol = document.querySelector('ol[contenteditable="true"]');
+      ol.addEventListener("input", function () {
+        if (ol.innerText === "") {
+          ol.innerHTML = "";
+        }
+      });
+    </script>
+  </head>
+
+  <body class="bg-gray-800">
+    <nav class="flex items-center justify-between flex-wrap p-4 bg-purple-700">
+      <div class="flex items-center flex-shrink-0 text-teal-100 mr-6">
+        <a href="../paste"
+          ><img
+            src="static/assets/paste.png"
+            style="height: 30px; display: inline-block; vertical-align: middle"
+          />
+          <span class="font-semibold text-xl tracking-tight">
+            &nbsp; pastebin</span
+          ></a
+        >
+      </div>
+      <a
+        href="https://github.com/sarthhh/"
+        class="block mt-2 lg:inline-block lg:mt-0 text-teal-100 hover:text-white"
+      >
+        <img
+          src="static/assets/github.png"
+          class="mr-2 flex-shrink-0 object-contain"
+          style="height: 35px"
+        />
+      </a>
+    </nav>
+
+    <ol contenteditable="true" class="m-5 outline-none" autofocus>
+      <li>print("hello world")</li>
+    </ol>
+  </body>
+</html>
