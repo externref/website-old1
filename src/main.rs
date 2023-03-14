@@ -20,5 +20,5 @@ async fn paste() -> NamedFile {
 fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![index, paste])
-        .mount("/static", FileServer::from("static"))
+        .mount("/static", FileServer::from("././static"))
 }
