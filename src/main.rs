@@ -41,6 +41,6 @@ async fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![index, paste])
         .mount("/paste", routes![create_paste])
-        .mount("/static", FileServer::from("static"))
+        .mount("/static", FileServer::from("././static"))
         .manage(injection)
 }
