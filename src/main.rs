@@ -18,7 +18,7 @@ async fn paste() -> NamedFile {
 
 #[launch]
 fn rocket() -> _ {
-    let paths = fs::read_dir("./").unwrap();
+    let paths = std::fs::read_dir("./").unwrap();
 
     for path in paths {
         println!("Name: {}", path.unwrap().path().display())
