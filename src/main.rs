@@ -18,6 +18,11 @@ async fn paste() -> NamedFile {
 
 #[launch]
 fn rocket() -> _ {
+    let paths = fs::read_dir("./").unwrap();
+
+    for path in paths {
+        println!("Name: {}", path.unwrap().path().display())
+    }
     rocket::build()
         .mount("/", routes![index, paste])
         .mount("/static", FileServer::from("././static"))
