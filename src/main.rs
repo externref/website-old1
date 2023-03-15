@@ -29,7 +29,7 @@ async fn create_paste(paste_data: &str) {
 
 #[launch]
 async fn rocket() -> _ {
-    let pool = sqlx::PgPool::connect("")
+    let pool = sqlx::PgPool::connect(&std::env::var("PGSQL_URL").expect("PGSQL_URL key not found."))
         .await
         .expect("Unable to create database pool connection.");
     let db_handler: database::DatabaseHandler =
