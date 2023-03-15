@@ -22,25 +22,13 @@
           >
       </div>
       <div class="rounded border-l-8 border-r-8 bg-teal-100 border-teal-100">
-        <button onclick="savePaste()">Save</button>
+        <button href="./paste">New</button>
       </div>
     </nav>
 
-    <ol
-      contenteditable="true"
-      id="paste_body"
-      class="m-5 outline-none"
-      autofocus
-    >
-      <li>print("hello world")</li>
-    </ol>
-    <script>
-      const ol = document.getElementById("paste_body");
-      ol.addEventListener("input", function () {
-        if (ol.innerText === "") {
-          ol.innerHTML = "";
-        }
-      });
-    </script>
+    <div class="m-5">
+        hello
+    </div>
+
   </body>
 </html>
