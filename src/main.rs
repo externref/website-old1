@@ -23,10 +23,10 @@ async fn paste() -> NamedFile {
         .expect("Unable to find file.")
 }
 
-#[get("/paste?<id>&<lang>")]
+#[get("/paste?<id>")]
 async fn view_paste(
     id: &str,
-    lang: std::option::Option<&str>,
+    // lang: std::option::Option<&str>,
     injection: &rocket::State<DBInjection>,
 ) -> (rocket::http::ContentType, String) {
     let handler = database::DatabaseHandler {
@@ -34,10 +34,10 @@ async fn view_paste(
     };
     let content = handler.get_paste(id).await;
 
-    let result = utils::highlight_code(&content, lang.unwrap_or_else(|| "py"));
+    //let result = utils::highlight_code(&content, lang.unwrap_or_else(|| "python"));
     let html_data = std::fs::read_to_string("static/templates/view_paste.html")
         .expect("Unable to read file.")
-        .replace("$content", &result)
+        .replace("$content", &content.replace("\n", "<br>").replace(" ","&nbsp" ))
         .to_string();
     (rocket::http::ContentType::HTML, html_data)
     //rocket::response::content::RawHtml(html_data)
@@ -51,22 +51,11 @@ async fn create_paste(
     let mut handler = database::DatabaseHandler {
         pool: injection.pool.clone(),
     };
+    println!("{}",paste_data);
     let paste_id = handler.add_paste(paste_data).await;
     rocket::response::Redirect::to(format!("../paste?id={}", paste_id))
 }
-#[get("/test")]
-fn hello_world() -> (rocket::http::ContentType, String) {
-    let sample_code = r#"
-import os
 
-def main():
-    print("your pgsql server password is" + os.getenv("PGSQL", "youshallnotpass"))
-"#;
-    (
-        rocket::http::ContentType::HTML,
-        utils::highlight_code(sample_code, "py"),
-    )
-}
 #[launch]
 async fn rocket() -> _ {
     let pool = std::sync::Arc::new(
@@ -76,9 +65,8 @@ async fn rocket() -> _ {
     );
 
     let injection = DBInjection { pool: pool.clone() };
-    pyo3::prepare_freethreaded_python();
     rocket::build()
-        .mount("/", routes![index, paste, view_paste, hello_world])
+        .mount("/", routes![index, paste, view_paste])
         .mount("/paste", routes![create_paste])
         .mount("/static", FileServer::from("././static"))
         .manage(injection)

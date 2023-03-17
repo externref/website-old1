@@ -1,5 +1,5 @@
-use sqlx;
 use crate::utils;
+use sqlx;
 pub struct DatabaseHandler {
     pub pool: std::sync::Arc<sqlx::PgPool>,
 }

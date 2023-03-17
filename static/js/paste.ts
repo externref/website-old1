@@ -13,3 +13,9 @@ function savePaste(): void {
     }
   }
 }
+
+function newPaste() {
+  window.location.replace(
+    `./paste`
+  );
+}

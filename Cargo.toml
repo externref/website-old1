@@ -6,7 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-pyo3 = "0.18.1"
 rand = "0.8.5"
 rocket = { version = "0.5.0-rc.2", features = ["secrets"] }
 sqlx = {version="0.6.2", features= ["postgres", "runtime-tokio-native-tls"] }

@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sarthak | pastebin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../static/js/paste.js"></script>
-    <link rel="stylesheet" href="static/css/paste.css" />
-  </head>
 
-  <body class="bg-gray-800">
-    <nav class="flex items-center justify-between flex-wrap p-4 bg-purple-700">
-      <div class="flex items-center flex-shrink-0 text-teal-100 mr-6">
-          <img
-            src="../static/assets/paste.png"
-            style="height: 30px; display: inline-block; vertical-align: middle"
-          />
-          <span class="font-semibold text-xl tracking-tight">
-            &nbsp; pastebin</span
-          >
-      </div>
-      <div class="rounded border-l-8 border-r-8 bg-teal-100 border-teal-100">
-        <button href="./paste">New</button>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sarthak | pastebin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../static/js/paste.js"></script>
+  <link rel="stylesheet" href="static/css/paste.css" />
+</head>
 
-    <div class="m-5">
-        $content
+<body class="bg-gray-800">
+  <nav class="flex items-center justify-between flex-wrap p-4 bg-purple-700">
+    <div class="flex items-center flex-shrink-0 text-teal-100 mr-6">
+      <img src="../static/assets/paste.png" style="height: 30px; display: inline-block; vertical-align: middle" />
+      <span class="font-semibold text-xl tracking-tight">
+        &nbsp; pastebin</span>
     </div>
+    <div class="rounded border-l-8 border-r-8 bg-teal-100 border-teal-100">
+      <button onclick="newPaste()">✎ New</button>
+    </div>
+  </nav>
 
-  </body>
+  <div class="m-5" style="color: aquamarine;font-family: monospace;">
+    $content
+  </div>
+
+</body>
+
 </html>
